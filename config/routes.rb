@@ -1,4 +1,25 @@
 Rails.application.routes.draw do
+  
+  get 'answers/index'
+
+  get 'answers/create'
+
+  get 'answers/update'
+
+  get 'answers/new'
+
+  get 'answers/edit'
+
+  get 'answers/destroy'
+
+  get 'answers/show'
+
+  resources :questions do
+    resources :answers
+  end
+  
+  root 'question#index'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
