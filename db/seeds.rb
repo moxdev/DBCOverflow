@@ -5,3 +5,25 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+FactoryGirl.define do
+  factory :question do
+    sequence(:title) {|n| "title#{n}" }
+    content "content"
+  end
+end
+
+FactoryGirl.define do
+  factory :answer do
+    sequence(:title) {|n| "title#{n}" }
+    content "content"
+  end
+end
+
+
+10.times do
+  FactoryGirl.create :question
+end
+
+10.times do
+  FactoryGirl.create :answer
+end

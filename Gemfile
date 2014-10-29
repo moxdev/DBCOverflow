@@ -32,7 +32,9 @@ gem 'capybara', group: :test
 
 gem 'shoulda-matchers', group: :test
 
-gem 'factory_girl', group: :test
+gem 'database_cleaner', group: :test
+
+gem 'factory_girl'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
