@@ -55,6 +55,7 @@ RSpec.describe QuestionsController, :type => :controller do
 
   describe "GET show" do
     let(:question) { Question.create(title: "Hey", content: "What's up.") }
+    let(:answer) { Answer.create(title: "This is the answer", content: "Hope this helps.")}
     it "returns http success" do
       get :show, {id: question.id}
       expect(response).to have_http_status(:success)
@@ -67,6 +68,10 @@ RSpec.describe QuestionsController, :type => :controller do
       get :show, {id: question.id}
       expect(response.body).to include(question.title)
     end
+    it "should show the answers" do 
+      question.answers << answer
+      get :show, {id: question.id}
+      expect(response.body).to include("This is the answer")
+    end
   end
-
 end

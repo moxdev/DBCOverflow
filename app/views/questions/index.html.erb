@@ -1,5 +1,13 @@
 <h1>DBC Overflow</h1>
+
+<% if notice %>
+<p><%= notice %></p>
+<% end %>
 <ul>
 <% @questions.each do |question| %>
 <li><%= link_to question.title, question_path(:id => question.id) %></li>
 <% end %>
+
+<%= link_to("New Question", new_question_path) %> 
+
+
