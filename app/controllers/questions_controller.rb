@@ -1,16 +1,32 @@
 class QuestionsController < ApplicationController
+  # before_action :all_tasks, only: [:index, :create]
+  respond_to :html, :js
+
   def index
+    client = Octokit::Client.new(:login => ENV['USERNAME'], :password => ENV['PASSWORD'])
+    # @response = client.get('https://api.github.com/zen')
     @questions = Question.order(:votes).reverse
+    @question = Question.new
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
   end
 
   def create
     @question = Question.new(question_params)
     if @question.save
       flash[:notice] = 'Question was saved'
-      redirect_to questions_path
     else
-      render :action => :new
+      flash[:notice] = 'Question was not saved'
     end
+    @questions = Question.order(:votes).reverse
+      respond_to do |format|
+        format.html
+        format.js
+      end
   end
 
   def update
@@ -21,6 +37,10 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def edit

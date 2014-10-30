@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20141030172921) do
     t.integer  "question_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "votes"
+    t.integer  "votes",       default: 0
   end
 
   create_table "questions", force: true do |t|
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20141030172921) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "votes"
+    t.integer  "votes",      default: 0
   end
 
 end
