@@ -35,14 +35,24 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
     @answer.votes += 1
     @answer.save
-    redirect_to :back
+    @question = Question.find(params[:question_id])
+    @answers = @question.answers.order(:votes).reverse
+    respond_to do |format|
+      format.html
+      format.js {render 'vote'}
+    end
   end
 
   def down_vote
     @answer = Answer.find(params[:id])
     @answer.votes -= 1
     @answer.save
-    redirect_to :back
+    @question = Question.find(params[:question_id])
+    @answers = @question.answers.order(:votes).reverse
+    respond_to do |format|
+      format.html
+      format.js {render 'vote'}
+    end
   end
 
   private

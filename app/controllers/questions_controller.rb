@@ -4,7 +4,8 @@ class QuestionsController < ApplicationController
 
   def index
     client = Octokit::Client.new(:login => ENV['USERNAME'], :password => ENV['PASSWORD'])
-    # @response = client.get('https://api.github.com/zen')
+    @user = client.login
+    @response = client.get('https://api.github.com/zen')
     @questions = Question.order(:votes).reverse
     @question = Question.new
 
@@ -62,14 +63,22 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @question.votes += 1
     @question.save
-    redirect_to questions_path
+    @questions = Question.order(:votes).reverse
+    respond_to do |format|
+      format.html
+      format.js {render 'vote'}
+    end
   end
 
   def down_vote
     @question = Question.find(params[:id])
     @question.votes -= 1
     @question.save
-    redirect_to questions_path
+    @questions = Question.order(:votes).reverse
+    respond_to do |format|
+      format.html
+      format.js {render 'vote'}
+    end
   end
 
   private

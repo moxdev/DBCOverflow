@@ -1,6 +1,5 @@
 <tr><td><%= link_to question.title, question_path(:id => question.id) %></td>
   <td><%= question.votes %> </td>
-  <td><%= link_to "Vote Up", up_vote_question_path(question), method: :post %></td>
-  <td><%=link_to "Vote Down", down_vote_question_path(question), method: :post %></td>
+  <td><%= link_to "Vote Up", up_vote_question_path(question), remote: true, method: :post %></td>
+  <td><%=link_to "Vote Down", down_vote_question_path(question), remote: true, method: :post %></td>
 </tr>
-<h1>BYE!!!</h1>

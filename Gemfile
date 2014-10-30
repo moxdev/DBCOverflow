@@ -38,7 +38,7 @@ gem 'factory_girl'
 
 gem 'octokit'
 
-gem 'dotenv'
+gem 'dotenv-rails', :groups => [:development, :test]
 
 
 # Use ActiveModel has_secure_password
