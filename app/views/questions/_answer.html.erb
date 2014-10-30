@@ -1,2 +1,5 @@
 <h3><%= answer.title %> </h3>
 <p><%= answer.content %> </p>
+<p><%= answer.votes %> </p>
+<p><%= link_to "Vote Up", up_vote_question_answer_path(@question, answer), method: :post %> </p>
+<p><%= link_to "Vote Down", down_vote_question_answer_path(@question, answer), method: :post %> </p>

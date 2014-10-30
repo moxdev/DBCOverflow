@@ -1,11 +1,20 @@
 Rails.application.routes.draw do
 
   resources :questions do
-    resources :answers
+    member do
+      post 'up_vote'
+      post 'down_vote'
+    end
+    resources :answers do
+      member do
+        post 'up_vote'
+        post 'down_vote'
+      end
+    end
   end
-  
+
   root 'questions#index'
-  
+
   # get 'about' => 'about#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

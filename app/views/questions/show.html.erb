@@ -4,15 +4,15 @@
 <%= link_to "Edit Question", edit_question_path %>
 <h2>Answers</h2>
 
-<%= render partial: "answer", collection: @question.answers %>
+<%= render partial: "answer", collection: @answers %>
 
-<%= form_for @answer, :url => question_answers_path(:question_id => params[:id]) do |f| %>
+<%= form_for @answers, :url => question_answers_path(:question_id => params[:id]) do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %><br>
-  
+
   <%= f.label :content %>
   <%= f.text_area :content %><br>
-  
+
   <%= f.submit %>
 
 <% end %>

@@ -9,6 +9,7 @@ FactoryGirl.define do
   factory :question do
     sequence(:title) {|n| "Why is it, that... #{n}" }
     content "question_content"
+    votes 200
   end
 end
 
@@ -16,6 +17,7 @@ FactoryGirl.define do
   factory :answer do
     sequence(:title) {|n| "Well, I'll tell ya about #{n}" }
     content "answer_content"
+    votes 200
   end
 end
 
