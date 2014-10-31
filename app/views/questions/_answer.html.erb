@@ -1,2 +1,6 @@
 <h3><%= answer.title %> </h3>
 <p><%= answer.content %> </p>
+
+<a>Answer Count: <%= answer.vote_count %>  </a>
+<a> <%= button_to "Up Vote", upvote_question_answer_path(@question, answer), method: :post %> </a>
+<a><%= button_to "Down Vote", downvote_question_answer_path(@question, answer), method: :post %> </a>

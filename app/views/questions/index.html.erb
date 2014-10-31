@@ -5,9 +5,11 @@
 <% end %>
 <ul>
 <% @questions.each do |question| %>
-<li><%= link_to question.title, question_path(:id => question.id) %></li>
+<br>
+<li><%= link_to question.title, question_path(question) %></li>
+<a>Vote Count: <%= question.vote_count %>  </a>
+<a> <%= button_to "Up Vote", upvote_question_path(question), method: :post %> </a>
+<a><%= button_to "Down Vote", downvote_question_path(question), method: :post %> </a>
+<br>
 <% end %>
-
-<%= link_to("New Question", new_question_path) %> 
-
-
+<%= link_to("Create a New Question", new_question_path) %>

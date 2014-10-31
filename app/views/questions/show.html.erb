@@ -1,7 +1,9 @@
 <h1><%= @question.title %></h1>
 <p><%= @question.content %></p>
+<%= link_to "Home", questions_path %>
 <%= link_to "Delete Question", question_path, method: :delete %>
 <%= link_to "Edit Question", edit_question_path %>
+
 <h2>Answers</h2>
 
 <%= render partial: "answer", collection: @question.answers %>
@@ -9,13 +11,15 @@
 <%= form_for @answer, :url => question_answers_path(:question_id => params[:id]) do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %><br>
-  
+
   <%= f.label :content %>
   <%= f.text_area :content %><br>
-  
+
   <%= f.submit %>
 
 <% end %>
 
-<!-- destroy question link -->
-
+<!-- create answer upvote links on question show page
+create answer downvote links on question show page
+display answer vote totals on question show page
+ -->

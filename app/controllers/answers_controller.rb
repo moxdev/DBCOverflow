@@ -11,7 +11,7 @@ class AnswersController < ApplicationController
     else
       redirect_to question_path
     end
-    
+
   end
 
   def update
@@ -30,7 +30,23 @@ class AnswersController < ApplicationController
   def show
     @answer = "what"
   end
-  
+
+  def upvote
+    @answer = Answer.find(params[:id])
+    @question = Question.find(params[:question_id])
+    @answer.vote_count += 1
+    @answer.save
+    redirect_to @question
+  end
+
+  def downvote
+    @answer = Answer.find(params[:id])
+    @question = Question.find(params[:question_id])
+    @answer.vote_count -= 1
+    @answer.save
+    redirect_to @question
+  end
+
   private
   def answer_params
     params.require(:answer).permit(:title, :content)
