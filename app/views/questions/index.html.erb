@@ -1,15 +1,19 @@
-<h1>DBC Overflow</h1>
+<h1 class="container">DBC Overflow</h1>
 
-<% if notice %>
-<p><%= notice %></p>
+
+<blockquote class="pretty"><span class="quote"> &#8220;</span><%= @response %><span class="quote">&#8221; </span></blockquote>
+<div class="container" id="niceynice">
+  <%= link_to("Create a New Question", new_question_path, remote: true) %>
+</div>
+
+
+  <% if notice %>
+  <p><%= notice %></p>
+
 <% end %>
-<ul>
-<% @questions.each do |question| %>
-<br>
-<li><%= link_to question.title, question_path(question) %></li>
-<a>Vote Count: <%= question.vote_count %>  </a>
-<a> <%= button_to "Up Vote", upvote_question_path(question), method: :post %> </a>
-<a><%= button_to "Down Vote", downvote_question_path(question), method: :post %> </a>
-<br>
-<% end %>
-<%= link_to("Create a New Question", new_question_path) %>
+
+<div class="container" id="questions">
+  <ol>
+    <%= render @questions %>
+  </ol>
+</div>

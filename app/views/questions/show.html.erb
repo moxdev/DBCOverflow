@@ -1,14 +1,24 @@
+<div class="container">
 <h1><%= @question.title %></h1>
 <p><%= @question.content %></p>
+
+<span class="spaced">
 <%= link_to "Home", questions_path %>
+</span>
+<span class="spaced">
 <%= link_to "Delete Question", question_path, method: :delete %>
+</span>
+
+<span class="spaced">
 <%= link_to "Edit Question", edit_question_path %>
+</span>
+</div>
 
 <h2>Answers</h2>
 
-<%= render partial: "answer", collection: @question.answers %>
+<%= render @question.answers %>
 
-<%= form_for @answer, :url => question_answers_path(:question_id => params[:id]) do |f| %>
+<%= form_for :answer, :url => question_answers_path(:question_id => params[:id]) do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %><br>
 
@@ -19,7 +29,3 @@
 
 <% end %>
 
-<!-- create answer upvote links on question show page
-create answer downvote links on question show page
-display answer vote totals on question show page
- -->

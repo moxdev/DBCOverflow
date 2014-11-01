@@ -1,0 +1,8 @@
+
+    <br>
+      <li><%= link_to question.title, question_path(question) %>
+      <a>Vote Count: <%= question.vote_count %>  </a>
+      <a> <%= button_to "Up Vote", upvote_question_path(question), method: :post %> </a>
+      <a><%= button_to "Down Vote", downvote_question_path(question), method: :post %> </a>
+      </li>
+    <br>

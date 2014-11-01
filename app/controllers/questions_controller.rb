@@ -1,15 +1,19 @@
 class QuestionsController < ApplicationController
+
+respond_to :js
   def index
     @questions = Question.all.order('vote_count desc')
+    @response = HTTParty.get('https://api.github.com/zen', { basic_auth: {username: ENV["USERNAME"], password: ENV["PASSWORD"]}, headers: {"User-Agent" => 'http://developer.github.com/v3'}})
   end
 
   def create
     @question = Question.new(question_params)
     if @question.save
       flash[:notice] = 'Question was saved'
-      redirect_to questions_path
-    else
-      render :action => :new
+      respond_to do |format|
+        format.html { render :action => :new}
+        format.js
+      end
     end
   end
 
@@ -21,6 +25,10 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    respond_to do |format|
+      format.html {render :action => :new}
+      format.js
+    end
   end
 
   def edit
@@ -34,11 +42,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.includes(:answers).find(params[:id])
-
-    # @question.includes(:answers)
-    # @answers = @question.answers
-    @answer = Answer.new
+    @question = Question.find(params[:id])
   end
 
   def upvote

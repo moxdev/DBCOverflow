@@ -1,3 +1,35 @@
 // Place all the styles related to the Questions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.pretty {
+  font-family: 'Cardo', serif;
+  font-size: 1.5em;
+}
+
+.quote {
+  font-family: 'IM Fell Great Primer', serif;
+  font-size: 1.5em;
+}
+body {
+  background-color: #F0F0F0;
+}
+
+.container {
+  font-family: 'IM Fell Great Primer', serif;
+  background-color: #A8A8A8;
+  width: 70%;
+  margin: 1% auto;
+  padding: 0 2em;
+  border-radius: 0.25em;
+}
+
+.niceynice {
+  font-family: 'IM Fell Great Primer', serif;
+  font-size: 1.5em;
+  margin-left: 15%;
+}
+
+.spaced {
+  margin: 1em;
+}
