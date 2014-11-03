@@ -1,11 +1,55 @@
-<%= form_for @question, remote: true do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %><br>
 
-  <%= f.label :content %>
-  <%= f.text_area :content %><br>
 
-  <%= f.submit %>
+
+  <div class="form-partial">
+
+  <%= form_for @question, remote: true do |f| %>
+  <% if @question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+      <% @question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="small-10">
+      <div class="row">
+        <div class="small-2 columns">
+          <%= f.label :title, class: "right inline" %>
+        </div>
+        <div class="small-10 columns">
+          <%= f.text_field :title %>
+        </div>
+      </div>
+    </div>
+
+    <div class="small-10">
+      <div class="row">
+        <div class="small-2 columns">
+          <%= f.label :content, class: "right inline" %>
+        </div>
+
+        <div class="small-10 columns">
+          <%= f.text_area :content %>
+        </div>
+      </div>
+    </div>
+
+    <div class="small-10">
+      <div class="row">
+        <div class="small-10 small-offset-2 columns">
+          <%= f.submit "Save",  class: 'button success radius tiny' %>
+          <%= link_to 'Cancel', questions_path, class: 'button radius tiny' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <% end %>
 
-
+</div>

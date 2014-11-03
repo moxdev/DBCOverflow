@@ -1,23 +1,31 @@
 <h1>DBC Overflow</h1>
+
 <p><%= @response %></p>
 <% if notice %>
 <p><%= notice %></p>
 <% end %>
-<table id="questions">
+
+<table>
   <thead>
-  <th>Question</th>
-  <th>Votes</th>
-</thead>
+    <tr>
+      <th>Question</th>
+      <th>Votes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
   <tbody>
-<% @questions.each do |question| %>
-<tr><td><%= link_to question.title, question_path(:id => question.id) %></td>
-  <td><%= question.votes %> </td>
-  <td><%= link_to "Vote Up", up_vote_question_path(question), remote: true, method: :post %></td>
-  <td><%=link_to "Vote Down", down_vote_question_path(question), remote: true, method: :post %></td>
-</tr>
-<% end %>
-</tbody>
+    <% @questions.each do |question| %>
+  <tr>
+    <td><%= link_to question.title, question_path(:id => question.id) %></td>
+    <td><%= question.votes %> </td>
+    <td><%= link_to "Vote Up", up_vote_question_path(question), remote: true, method: :post %></td>
+    <td><%=link_to "Vote Down", down_vote_question_path(question), remote: true, method: :post %></td>
+  </tr>
+    <% end %>
+  </tbody>
 </table>
+
 <!-- <p><%= render 'form' %></p> -->
-<p><%= link_to 'New Question', new_question_path, remote: true %></p>
+<p><%= link_to 'New Question', new_question_path, class: 'button success radius tiny', remote: true %></p>
 <div id="task-form" style="display:none;"><h1>HI</h1></div>
